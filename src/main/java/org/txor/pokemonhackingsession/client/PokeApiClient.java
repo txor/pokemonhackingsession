@@ -7,8 +7,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
 import org.txor.pokemonhackingsession.model.Pokemon;
 import org.txor.pokemonhackingsession.model.Pokemons;
-
-import java.util.List;
+import reactor.core.publisher.Mono;
 
 @Component
 @RequiredArgsConstructor
@@ -28,13 +27,12 @@ public class PokeApiClient {
     }
 
     @SneakyThrows
-    public Pokemons getAllPokemons() {
+    public Mono<Pokemons> getAllPokemons() {
         return webClient
                 .get()
                 .uri("https://pokeapi.co/api/v2/pokemon/?offset=0&limit=100000")
                 .retrieve()
                 .bodyToMono(Pokemons.class)
-                .toFuture()
-                .get();
+                .log();
     }
 }

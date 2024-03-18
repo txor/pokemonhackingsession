@@ -1,5 +1,6 @@
 package org.txor.pokemonhackingsession;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.reactive.AutoConfigureWebTestClient;
@@ -15,6 +16,7 @@ class PokemonhackingsessionApplicationTests {
     private WebTestClient webTestClient;
 
     @Test
+//	@Disabled
     void getHeaviest() {
         webTestClient
 				.get()
